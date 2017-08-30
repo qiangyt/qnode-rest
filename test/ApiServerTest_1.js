@@ -39,16 +39,6 @@ describe("ApiServer test suite 1: ", function() {
         }
     });
 
-    it("_loadAllApi(): raise error when duplicated bean", function() {
-        try {
-            const s = buildApiServer();
-            const apiFileList = ['Where'];
-            s._loadAllApi(apiFileList);
-        } catch (e) {
-            expect(e.message.indexOf('duplicated bean') >= 0).toBeTruthy();
-        }
-    });
-
     it("_loadApi(): raise error when API.execute function is not defined", function() {
         try {
             s = buildApiServer('post', null, 'desc');
