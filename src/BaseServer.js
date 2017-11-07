@@ -5,10 +5,17 @@ const koaLogger = require('koa-logger');
 const koaBody = require('koa-body');
 const Http = require('http');
 const CreateKoaRouter = require('koa-router');
+const Kcors = require('kcors');
 
 module.exports = class BaseServer {
 
     constructor(config) {
+        config = config || {};
+
+        config.bodySizeLimit = config.bodySizeLimit || '1kb';
+        config.cors = (config.cors === undefined || config.cors === null) ? true : config.cors;
+        config.log = (config.log === undefined || config.log === null) ? true : config.log;
+
         this._config = config;
     }
 
@@ -17,17 +24,22 @@ module.exports = class BaseServer {
     }
 
     _initKoa() {
+        const cfg = this._config;
         const koa = new Koa();
+
         koa.use((ctx, next) =>
             next()
             .then(result => {
-
                 return result;
             })
             .catch(err => this.formatJsonError(ctx, err)));
-        koa.use(koaLogger());
+
+        if (cfg.cors) koa.use(Kcors());
+
+        if (cfg.log) koa.use(koaLogger());
+
         koa.use(koaBody({
-            jsonLimit: this._config.bodySizeLimit || '1kb'
+            jsonLimit: cfg.bodySizeLimit
         }));
 
         this._koa = koa;
