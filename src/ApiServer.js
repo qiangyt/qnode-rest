@@ -57,7 +57,7 @@ module.exports = class ApiServer extends BaseServer {
     }
 
     _findAllApiFiles() {
-        const dir = this._config.rootDir;
+        const dir = Path.join(this._beans.baseDir, this._config.rootDir);
         try {
             Fs.statSync(dir);
         } catch (e) {
@@ -91,7 +91,7 @@ module.exports = class ApiServer extends BaseServer {
     _findApiFile(full) {
         const path = Path.parse(full);
         if ('.js' === path.ext.toLowerCase()) {
-            return full.substring(this._config.rootDir.length, full.length - 3);
+            return full.substring(Path.join(this._beans.baseDir, this._config.rootDir).length, full.length - 3);
         }
     }
 
@@ -121,7 +121,7 @@ module.exports = class ApiServer extends BaseServer {
 
     _normalizeRootPath(path, defaultPath) {
         let r = path || defaultPath.toLowerCase();
-        if ('/' === r.charAt(0)) r = path.substring(1);
+        if ('/' === r.charAt(0)) r = r.substring(1);
         return this._config.rootPath + r;
     }
 
