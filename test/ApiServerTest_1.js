@@ -42,6 +42,7 @@ describe("ApiServer test suite 1: ", function() {
     it("_loadApi(): raise error when API.execute function is not defined", function() {
         try {
             s = buildApiServer('post', null, 'desc');
+            s._loadApi('beanName');
             failhere();
         } catch (e) {
             expect(e.message.indexOf('execute() not defined') >= 0).toBeTruthy();

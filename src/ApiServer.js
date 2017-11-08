@@ -2,6 +2,7 @@ const BaseServer = require('./BaseServer');
 const Errors = require('qnode-error').Errors;
 const BaseError = require('qnode-error').BaseError;
 const Path = require('path');
+const Fs = require('fs');
 
 
 module.exports = class ApiServer extends BaseServer {
@@ -11,8 +12,8 @@ module.exports = class ApiServer extends BaseServer {
 
         this._normalizeConfiguration();
 
-        const apiFileList = this._findAllApiFiles();
-        this._apiByPath = this._loadAllApi(apiFileList);
+        this._apiFileList = this._findAllApiFiles();
+        this._apiByPath = this._loadAllApi(this._apiFileList);
     }
 
     _normalizeConfiguration() {
@@ -56,7 +57,42 @@ module.exports = class ApiServer extends BaseServer {
     }
 
     _findAllApiFiles() {
-        return ['Where'];
+        const dir = this._config.rootDir;
+        try {
+            Fs.statSync(dir);
+        } catch (e) {
+            this._logger.warn(`no api directory found: ${dir}`);
+            return [];
+        }
+        this._logger.info('api directory: ' + dir);
+
+        return this._findApiFileInDirectory(dir);
+    }
+
+    _findApiFileInDirectory(dir) {
+        let r = [];
+
+        /*eslint no-sync: "off"*/
+        for (const fileName of Fs.readdirSync(dir)) {
+            const full = Path.join(dir, fileName);
+            const stat = Fs.statSync(full);
+            if (stat.isDirectory()) {
+                r = r.concat(this._findApiFileInDirectory(full));
+            } else {
+                const f = this._findApiFile(full);
+                if (f) r.push(f);
+            }
+        }
+
+        return r;
+    }
+
+
+    _findApiFile(full) {
+        const path = Path.parse(full);
+        if ('.js' === path.ext.toLowerCase()) {
+            return full.substring(this._config.rootDir.length, full.length - 3);
+        }
     }
 
     _loadAllApi(apiFileList) {
