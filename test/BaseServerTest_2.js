@@ -5,7 +5,7 @@ const BaseServer = require(`${SRC}/BaseServer`);
 const qnodeError = require('qnode-error');
 const supertest = require('supertest');
 const RequestError = qnodeError.RequestError;
-const Beans = require('qnode-beans');
+const Beans = require('qnode-beans').Beans;
 
 function buildBaseServer(port) {
     const beans = new Beans();

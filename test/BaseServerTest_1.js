@@ -6,7 +6,7 @@ const qnodeError = require('qnode-error');
 const MissingParamError = qnodeError.MissingParamError;
 const InternalError = qnodeError.InternalError;
 const RequestError = qnodeError.RequestError;
-const Beans = require('qnode-beans');
+const Beans = require('qnode-beans').Beans;
 
 function buildBaseServer() {
     const beans = new Beans();

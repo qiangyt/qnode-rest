@@ -39,7 +39,8 @@ module.exports = class BaseServer {
         if (cfg.log) koa.use(koaLogger());
 
         koa.use(koaBody({
-            jsonLimit: cfg.bodySizeLimit
+            jsonLimit: cfg.bodySizeLimit,
+            multipart: true
         }));
 
         this._koa = koa;

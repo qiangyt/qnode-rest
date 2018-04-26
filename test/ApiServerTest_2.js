@@ -1,7 +1,7 @@
 /* eslint no-undef: "off" */
 
 const SRC = '../src';
-const Beans = require('qnode-beans');
+const Beans = require('qnode-beans').Beans;
 const ApiServer = require(`${SRC}/ApiServer`);
 const mockFs = require('mock-fs');
 
