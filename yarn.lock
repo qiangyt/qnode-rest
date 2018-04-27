@@ -2522,7 +2522,7 @@ node-pre-gyp@^0.6.36:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-node-uuid@~1.4.7:
+node-uuid@1.4.8, node-uuid@~1.4.7:
   version "1.4.8"
   resolved "https://registry.yarnpkg.com/node-uuid/-/node-uuid-1.4.8.tgz#b040eb0923968afabf8d32fb1f17f1167fdab907"
 
@@ -2817,11 +2817,13 @@ q@~1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.4.1.tgz#55705bcd93c5f3673530c2c2cbc0c2b3addc286e"
 
-qnode-beans@1.1.4:
-  version "1.1.4"
-  resolved "https://registry.npmjs.org/qnode-beans/-/qnode-beans-1.1.4.tgz#0f8e24eb68c3f2ea31cd8cbf3d93239cf4e1f617"
+qnode-beans@1.1.8:
+  version "1.1.8"
+  resolved "https://registry.npmjs.org/qnode-beans/-/qnode-beans-1.1.8.tgz#6126dc023d70a194b656e3fba1090f0e16c25777"
   dependencies:
     lodash "4.17.4"
+    node-uuid "1.4.8"
+    qnode-error "1.0.3"
     qnode-log "1.0.3"
 
 qnode-config@1.0.2:
@@ -2843,6 +2845,13 @@ qnode-config@1.0.6:
 qnode-error@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/qnode-error/-/qnode-error-1.0.2.tgz#c768c5e85b8f6f85b5440b2536a7946b2e0cb907"
+  dependencies:
+    qnode-config "1.0.2"
+    sprintf-js "1.1.1"
+
+qnode-error@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/qnode-error/-/qnode-error-1.0.3.tgz#a601d285a689bd4557259b3932f08cf29aa65b69"
   dependencies:
     qnode-config "1.0.2"
     sprintf-js "1.1.1"
