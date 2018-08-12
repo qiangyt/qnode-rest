@@ -2817,55 +2817,33 @@ q@~1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.4.1.tgz#55705bcd93c5f3673530c2c2cbc0c2b3addc286e"
 
-qnode-beans@1.1.8:
-  version "1.1.8"
-  resolved "https://registry.npmjs.org/qnode-beans/-/qnode-beans-1.1.8.tgz#6126dc023d70a194b656e3fba1090f0e16c25777"
+qnode-beans@1.1.10:
+  version "1.1.10"
+  resolved "https://registry.npmjs.org/qnode-beans/-/qnode-beans-1.1.10.tgz#84984dfbf3650a213f327be9d589ce2b4a6c0c93"
   dependencies:
     lodash "4.17.4"
     node-uuid "1.4.8"
-    qnode-error "1.0.3"
-    qnode-log "1.0.3"
+    qnode-error "1.0.4"
+    qnode-log "1.0.4"
 
-qnode-config@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/qnode-config/-/qnode-config-1.0.2.tgz#773f74f5ad683c750163e4229f324fe3c2554430"
+qnode-config@1.0.7:
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/qnode-config/-/qnode-config-1.0.7.tgz#44a1996678b08d78d800d4c7953598532b56da4b"
   dependencies:
     js-yaml "3.9.1"
     lodash "4.17.4"
-    qnode-log "1.0.1"
+    qnode-log "1.0.4"
 
-qnode-config@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/qnode-config/-/qnode-config-1.0.6.tgz#063586dd210ba4dabd32ca978f34339dc256ab44"
+qnode-error@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/qnode-error/-/qnode-error-1.0.4.tgz#bee5363328a85707b48983aeecf552c6afcb2aae"
   dependencies:
-    js-yaml "3.9.1"
-    lodash "4.17.4"
-    qnode-log "1.0.3"
-
-qnode-error@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/qnode-error/-/qnode-error-1.0.2.tgz#c768c5e85b8f6f85b5440b2536a7946b2e0cb907"
-  dependencies:
-    qnode-config "1.0.2"
+    qnode-config "1.0.7"
     sprintf-js "1.1.1"
 
-qnode-error@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/qnode-error/-/qnode-error-1.0.3.tgz#a601d285a689bd4557259b3932f08cf29aa65b69"
-  dependencies:
-    qnode-config "1.0.2"
-    sprintf-js "1.1.1"
-
-qnode-log@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/qnode-log/-/qnode-log-1.0.1.tgz#aae8460fa77637271ab1bad52afe6b357119d553"
-  dependencies:
-    log4js "2.3.0"
-    sprintf-js "1.1.1"
-
-qnode-log@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/qnode-log/-/qnode-log-1.0.3.tgz#3522ec148c84ed1099beff5f62635157d8561fe1"
+qnode-log@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/qnode-log/-/qnode-log-1.0.4.tgz#18cf8eb852451a70d45657188ad77c3b2d9d41c6"
   dependencies:
     log4js "2.3.0"
     sprintf-js "1.1.1"

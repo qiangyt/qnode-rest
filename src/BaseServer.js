@@ -82,7 +82,7 @@ module.exports = class BaseServer {
         //ctx.app.emit('error', err, ctx);
     }
 
-    start() {
+    async start() {
         const logger = this._logger;
         logger.debug('starting server: %s', this._name);
 
@@ -91,11 +91,14 @@ module.exports = class BaseServer {
 
         this.prepare();
 
-        this._server = Http.createServer(this._koa.callback()).listen(port, err => {
-            if (err) logger.error(err);
-            else logger.info('port listening on: %s\n', port);
+        await new Promise((resolve, reject) => {
+            this._server = Http.createServer(this._koa.callback()).listen(port, err => {
+                if (err) return reject(err);
+                resolve();
+            });    
         });
-
+        logger.info('port listening on: %s\n', port);
+        
         this.started = true;
 
         return this._server;
